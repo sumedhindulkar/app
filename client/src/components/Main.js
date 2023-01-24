@@ -13,7 +13,7 @@ function Main() {
           height: "70vh",
         }}
       >
-        <Typography variant="h3">Album layout</Typography>
+        <Typography variant="h3">Home layout</Typography>
         <Typography
           variant="subtitle1"
           sx={{
