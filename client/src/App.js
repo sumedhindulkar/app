@@ -1,6 +1,9 @@
 import "./App.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import Navbar from "./components/Navbar";
+import Main from "./components/Main";
+
 function App() {
   const [posts, setPosts] = useState(null);
   useEffect(() => {
@@ -11,7 +14,12 @@ function App() {
 
     fetchData();
   }, []);
-  return <div>HELLO:{posts && JSON.stringify(posts)}</div>;
+  return (
+    <>
+      <Navbar />
+      <Main />
+    </>
+  );
 }
 
 export default App;
