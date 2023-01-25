@@ -239,6 +239,18 @@
         "rate": 3.6,
         "count": 145
       }
+    },
+    {
+      "title": "Giva Rings ",
+      "price": 122.3,
+      "description": "Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.",
+      "category": "Rings",
+      "image": "https://images.unsplash.com/photo-1586104237516-5b7075e00d45?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      "rating": {
+        "rate": 4.1,
+        "count": 259
+      },
+      "id": 21
     }
   ]
 }
