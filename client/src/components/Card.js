@@ -6,49 +6,48 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea, Container, Box } from "@mui/material";
 import GradeIcon from "@mui/icons-material/Grade";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
-export default function ActionAreaCard() {
+export default function ActionAreaCard(item) {
   return (
-    <Container>
-      <Card sx={{ maxWidth: 345 }}>
-        <CardActionArea>
-          <CardMedia
-            component="img"
-            height="140"
-            image="https://images.unsplash.com/photo-1577870736095-e88b9030dd68?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
-            alt="green iguana"
+    <Card sx={{ maxWidth: 345 }}>
+      <CardActionArea>
+        <CardContent
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
+          }}
+        >
+          <img
+            src={item.item.image}
+            style={{ width: "200px", maxHeight: "280px", padding: "30px" }}
           />
-          <CardContent
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              flexDirection: "column",
-            }}
+          <Typography gutterBottom variant="h6" sx={{ textAlign: "center" }}>
+            {item.item.title}
+          </Typography>
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{ textAlign: "center", my: 1 }}
           >
-            <Typography gutterBottom variant="h6">
-              PRODUCT TITLE
-            </Typography>
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              sx={{ textAlign: "center", my: 1 }}
-            >
-              Lizards are a widespread group of squamate reptiles, with over
-              6,000 species, ranging across all continents except Antarctica
-            </Typography>
-            <Box sx={{ my: 1 }}>
-              <GradeIcon />
-              <GradeIcon />
-              <GradeIcon />
-              <GradeIcon />
-              <StarBorderIcon />
-            </Box>
-            <Typography gutterBottom variant="subtitle2">
-              PRICE: 180Rs
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-      </Card>
-    </Container>
+            {item.item.description.substr(0, 130)}...
+          </Typography>
+          <Box sx={{ my: 1 }}>
+            {/* <StarBorderIcon /> */}
+
+            {[1, 2, 3, 4, 5].map((i) => {
+              return Math.ceil(item.item.rating.rate) > i ? (
+                <GradeIcon />
+              ) : (
+                <StarBorderIcon />
+              );
+            })}
+          </Box>
+          <Typography gutterBottom variant="subtitle2">
+            PRICE: ${item.item.price}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
   );
 }
