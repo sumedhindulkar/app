@@ -30,7 +30,10 @@ function AddProduct() {
   };
 
   const handleSubmit = async (event) => {
-    const response = await axios.post("/posts", data);
+    const response = await axios.post(
+      "https://odd-lime-anemone-kit.cyclic.app/posts",
+      data
+    );
     console.log(response);
     setData({
       title: "",

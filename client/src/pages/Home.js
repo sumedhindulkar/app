@@ -16,7 +16,9 @@ function Home() {
   const [posts, setPosts] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await axios.get("/posts");
+      const { data } = await axios.get(
+        "https://odd-lime-anemone-kit.cyclic.app/posts"
+      );
       setPosts(data);
     };
     fetchData();
