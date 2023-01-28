@@ -29,7 +29,7 @@ function Home() {
           {posts &&
             posts.map((item) => {
               return (
-                <Grid key={item.id} item xs={4} sx={{ height: "650px" }}>
+                <Grid key={item.id} item md={3} sx={{ height: "650px" }}>
                   <Card item={item} />
                 </Grid>
               );

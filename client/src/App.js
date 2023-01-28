@@ -8,7 +8,7 @@ function App() {
     <>
       <NavBar />
       <Switch>
-        <Route exact path="/Home" component={Home} />
+        <Route exact path="/" component={Home} />
         <Route exact path="/addProduct" component={AddProduct} />
       </Switch>
     </>

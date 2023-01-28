@@ -36,7 +36,7 @@ export default function ActionAreaCard(item) {
             {/* <StarBorderIcon /> */}
 
             {[1, 2, 3, 4, 5].map((i) => {
-              return Math.ceil(item.item.rating.rate) > i ? (
+              return Math.ceil(item.item.rating.rate) >= i ? (
                 <GradeIcon />
               ) : (
                 <StarBorderIcon />
