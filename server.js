@@ -13,8 +13,6 @@ app.use(middlewares);
 app.use(cors());
 app.use(express.json());
 
-app.use(router);
-
 app.use(express.static(path.join(__dirname, "./client/build")));
 
 app.get("*", (req, res) => {
@@ -25,6 +23,7 @@ app.get("*", (req, res) => {
     }
   );
 });
+app.use(router);
 
 app.listen(port, () => {
   console.log("server is running on port " + port);
