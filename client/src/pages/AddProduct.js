@@ -1,5 +1,4 @@
-import React from "react";
-
+import React, { useState, useEffect } from "react";
 import {
   Grid,
   Container,
@@ -9,8 +8,42 @@ import {
   Button,
   Typography,
 } from "@mui/material";
-import NavBar from "../components/Navbar";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
 function AddProduct() {
+  const [data, setData] = useState({
+    title: "",
+    price: "",
+    description: "",
+    image: "",
+    rating: {
+      rate: 4,
+    },
+  });
+  const history = useHistory();
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setData((prev) => {
+      return { ...prev, [name]: value };
+    });
+  };
+
+  const handleSubmit = async (event) => {
+    const response = await axios.post("/posts", data);
+    console.log(response);
+    setData({
+      title: "",
+      price: "",
+      description: "",
+      image: "",
+      rating: {
+        rate: 4,
+      },
+    });
+    history.push("/");
+  };
+
   return (
     <>
       <Container sx={{ mt: 5 }}>
@@ -21,12 +54,13 @@ function AddProduct() {
           <Grid item xs={12} sm={6}>
             <TextField
               autoComplete="given-name"
-              name="firstName"
+              name="title"
               required
               fullWidth
               id="firstName"
               label="Product Title"
               placeholder="Rings"
+              onChange={handleChange}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -35,30 +69,35 @@ function AddProduct() {
               fullWidth
               id="lastName"
               label="Product Description"
-              name="lastName"
+              name="description"
               autoComplete="family-name"
+              onChange={handleChange}
             />
           </Grid>
           <Grid item xs={6}>
             <TextField
               required
               fullWidth
-              name="password"
+              name="rating"
               label="Product Rating"
-              type="password"
               id="password"
               autoComplete="new-password"
+              onChange={(event) => {
+                // setData((prev) => {
+                //   return { ...prev, ["rating"]["rate"]: event.target.value };
+                // });
+              }}
             />
           </Grid>
           <Grid item xs={6}>
             <TextField
               required
               fullWidth
-              name="password"
+              name="price"
               label="Product Price"
-              type="password"
               id="password"
               autoComplete="new-password"
+              onChange={handleChange}
             />
           </Grid>
           <Grid item xs={12}>
@@ -67,8 +106,9 @@ function AddProduct() {
               fullWidth
               id="email"
               label="Image URL"
-              name="email"
+              name="image"
               autoComplete="email"
+              onChange={handleChange}
             />
           </Grid>
 
@@ -78,6 +118,7 @@ function AddProduct() {
               fullWidth
               variant="contained"
               sx={{ p: 1, mt: 2 }}
+              onClick={handleSubmit}
             >
               Add Product
             </Button>
